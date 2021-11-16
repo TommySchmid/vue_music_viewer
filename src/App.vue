@@ -30,8 +30,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #main {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   height: 1000px;
 }
