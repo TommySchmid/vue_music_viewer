@@ -1,11 +1,10 @@
 <template>
   <div class="header">
-    <div>
-      <img
-        src="https://hostedimages-cdn.aweber-static.com/MTQ0MjU1NQ==/original/3250f960b0184f7498c125c0748dce50.png"
-        alt="Crate Companion"
-      />
-    </div>
+    <img
+      class="img"
+      src="https://hostedimages-cdn.aweber-static.com/MTQ0MjU1NQ==/original/3250f960b0184f7498c125c0748dce50.png"
+      alt="Crate Companion"
+    />
   </div>
 </template>
 
@@ -16,8 +15,12 @@ export default {
 </script>
 
 <style scoped>
-  .header {
-    width: 100%;
-    background-color: black;
-  }
+.header {
+  background-color: black;
+  width: 100%;
+}
+
+.img {
+  height: 100px;
+}
 </style>
