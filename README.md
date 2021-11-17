@@ -1,4 +1,4 @@
-# vue_cc
+Converted a react project (https://github.com/TommySchmid/music_viewer) into a vue project.
 
 ## Project setup
 ```
