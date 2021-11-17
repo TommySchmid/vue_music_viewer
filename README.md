@@ -1,3 +1,4 @@
+Available for use at https://crate-companion-vue.surge.sh/
 Converted a react project (https://github.com/TommySchmid/music_viewer) into a vue project.
 
 ## Project setup
