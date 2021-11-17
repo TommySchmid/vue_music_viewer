@@ -1,9 +1,9 @@
 <template>
-  <div>
-    Hey!
+  <div class="albumDisplay">
     <div v-for="album in albums" v-bind:key="album">
       <img :src="album.image[2]['#text']"
         />
+      <br />
       {{ album.name }}
     </div>
   </div>
@@ -16,4 +16,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+  .albumDisplay{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .albumDisplay div{
+    margin: 5px;
+    color: white;
+  }
+</style>
