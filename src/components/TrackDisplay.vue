@@ -1,7 +1,10 @@
 <template>
-  <div class="trackDisplay">
-    <div v-for="track in tracks" :key="track.name">
-      {{ track.name }}
+  <div>
+    <div>Keep an eye out for these top tracks!</div>
+    <div class="trackDisplay">
+      <div v-for="track in tracks" :key="track.name">
+        {{ track.name }}
+      </div>
     </div>
   </div>
 </template>
@@ -9,9 +12,8 @@
 <script>
 export default {
   name: "TrackDisplay",
-  props: ["tracks"],
-  methods: {
-  }
+  props: ["tracks", "artist"],
+  methods: {},
 };
 </script>
 
