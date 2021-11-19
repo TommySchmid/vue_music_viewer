@@ -7,21 +7,74 @@
     }"
   >
     <Header />
-    <Form />
+    <Form @formSubmit="artistSearch" />
+    <div>
+      <template v-if="display && errorMessage === undefined">
+        <AlbumDisplay v-bind:albums="this.topAlbums" />
+        <TrackDisplay 
+          v-bind:tracks="this.topTracks"
+        />
+      </template>
+      <div v-else-if="errorMessage" class="errorMessage">
+        {{ errorMessage }}
+      </div>
+      <div v-else class="errorMessage">{{ networkError }}</div>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 import Header from "./components/Header.vue";
 import Form from "./components/Form.vue";
-// import AlbumDisplay from "./components/AlbumDisplay.vue"
-// import TrackDisplay from "./components/TrackDisplay.vue"
+import AlbumDisplay from "./components/AlbumDisplay.vue"
+import TrackDisplay from "./components/TrackDisplay.vue"
 
 export default {
   name: "App",
   components: {
     Header,
     Form,
+    AlbumDisplay,
+    TrackDisplay
+  },
+  data() {
+    return {
+      artist: null,
+      topAlbums: null,
+      topTracks: null,
+      display: false,
+      btnIsDisabled: true,
+      errorMessage: "",
+      networkError: "",
+    };
+  },
+  methods: {
+    artistSearch(artist) {
+      axios
+        .get(
+          `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=ec2f1febe013b411a18b994f9cdb9319&format=json`
+        )
+        .then((response) => {
+          console.log("album", response);
+          this.errorMessage = response.data.message;
+          this.topAlbums = response.data.topalbums.album.slice(0, 5);
+          this.display = true;
+        })
+        .catch(() => {
+          this.networkError = "The network is currently unavailable";
+        });
+      axios
+        .get(
+          `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=ec2f1febe013b411a18b994f9cdb9319&format=json`
+        )
+        .then((response) => {
+          console.log("track", response);
+          this.topTracks = response.data.toptracks.track.slice(0, 10);
+        })
+        .catch((error) => console.log("error", error));
+    },
   },
 };
 </script>
