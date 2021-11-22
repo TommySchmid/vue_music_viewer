@@ -1,8 +1,8 @@
 <template>
   <div class="albumDisplay">
-    <div v-for="album in albums" v-bind:key="album">
-      <img :src="album.image[2]['#text']"
-        />
+    <div v-for="album in albums" :key="album.name">
+      <a :href="album.url" target="_blank"><img :src="album.image[2]['#text']"
+        /></a>
       <br />
       {{ album.name }}
     </div>
