@@ -1,8 +1,10 @@
 import Vue from 'vue'
-import Main_CC from './pages/Main_CC.vue'
+import Header from './Header.vue'
+import router from './router'
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(Main_CC),
+  router,
+  render: h => h(Header),
 }).$mount('#app')
