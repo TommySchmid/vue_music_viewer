@@ -8,12 +8,10 @@
   >
     <Header />
     <Form @formSubmit="artistSearch" />
-    <div>
+    <div id="main">
       <template v-if="display && errorMessage === undefined">
         <AlbumDisplay v-bind:albums="this.topAlbums" />
-        <TrackDisplay 
-          v-bind:tracks="this.topTracks"
-        />
+        <TrackDisplay v-bind:tracks="this.topTracks" />
       </template>
       <div v-else-if="errorMessage" class="errorMessage">
         {{ errorMessage }}
@@ -26,10 +24,10 @@
 <script>
 import axios from "axios";
 
-import Header from "./components/Header.vue";
-import Form from "./components/Form.vue";
-import AlbumDisplay from "./components/AlbumDisplay.vue"
-import TrackDisplay from "./components/TrackDisplay.vue"
+import Header from "../cc_components/Header.vue";
+import Form from "../cc_components/Form.vue";
+import AlbumDisplay from "../cc_components/AlbumDisplay.vue"
+import TrackDisplay from "../cc_components/TrackDisplay.vue"
 
 export default {
   name: "App",
@@ -79,11 +77,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #main {
   display: flex;
   flex-direction: column;
   text-align: center;
   height: 1000px;
+}
+
+.errorMessage {
+  color: white;
 }
 </style>
