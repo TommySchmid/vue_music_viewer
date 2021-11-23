@@ -6,7 +6,6 @@
         'url(https://images.unsplash.com/photo-1587731556938-38755b4803a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1178&q=80)',
     }"
   >
-    <Header />
     <Form @formSubmit="artistSearch" />
     <div id="main">
       <template v-if="display && errorMessage === undefined">
@@ -24,15 +23,13 @@
 <script>
 import axios from "axios";
 
-import Header from "../cc_components/Header.vue";
 import Form from "../cc_components/Form.vue";
 import AlbumDisplay from "../cc_components/AlbumDisplay.vue"
 import TrackDisplay from "../cc_components/TrackDisplay.vue"
 
 export default {
-  name: "App",
+  name: "Main_CC",
   components: {
-    Header,
     Form,
     AlbumDisplay,
     TrackDisplay
