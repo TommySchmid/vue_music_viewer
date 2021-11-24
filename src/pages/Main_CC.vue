@@ -6,8 +6,13 @@
         'url(https://images.unsplash.com/photo-1587731556938-38755b4803a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1178&q=80)',
     }"
   >
+    <p>
+      Search for your favorite band and find a list of their most popular albums
+      and tracks below!
+    </p>
+
     <Form @formSubmit="artistSearch" />
-    <div id="main">
+    <div>
       <template v-if="display && errorMessage === undefined">
         <AlbumDisplay v-bind:albums="this.topAlbums" />
         <TrackDisplay v-bind:tracks="this.topTracks" />
@@ -23,16 +28,16 @@
 <script>
 import axios from "axios";
 
-import Form from "../cc_components/Form.vue";
-import AlbumDisplay from "../cc_components/AlbumDisplay.vue"
-import TrackDisplay from "../cc_components/TrackDisplay.vue"
+import Form from "../form/Form.vue";
+import AlbumDisplay from "../cc_components/AlbumDisplay.vue";
+import TrackDisplay from "../cc_components/TrackDisplay.vue";
 
 export default {
   name: "Main_CC",
   components: {
     Form,
     AlbumDisplay,
-    TrackDisplay
+    TrackDisplay,
   },
   data() {
     return {
@@ -83,6 +88,10 @@ export default {
 }
 
 .errorMessage {
+  color: white;
+}
+
+p {
   color: white;
 }
 </style>
