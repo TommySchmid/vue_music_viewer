@@ -1,15 +1,21 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
 import Main_CC from '../pages/Main_CC'
-import UML from '../pages/UML'
+import Main_UML from '../pages/Main_UML'
+import Welcome from '../pages/Welcome'
 
 Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/",
+    name: "Welcome",
+    component: Welcome
+  },
+  {
     path: "/uml",
     name: "UML",
-    component: UML
+    component: Main_UML
   },
   {
     path: "/crate-companion",
