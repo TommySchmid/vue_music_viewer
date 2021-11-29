@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <div className="form">
     <form>
       <input v-model="artist" v-on:keyup="btnIsDisabled = false" type="text" />
       <br />
@@ -22,6 +22,7 @@ export default {
   methods: {
     formSubmit() {
       this.$emit("formSubmit", this.artist);
+      this.$emit("umlAdd", this.artist)
       this.artist = null;
       this.btnIsDisabled = true;
     },
@@ -31,7 +32,7 @@ export default {
 
 <style scoped>
 .form p {
-  color: white;
+  color: rgb(180, 162, 162);
 }
 
 .errorMessage {
