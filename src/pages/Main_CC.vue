@@ -17,10 +17,10 @@
         <AlbumDisplay v-bind:albums="this.topAlbums" />
         <TrackDisplay v-bind:tracks="this.topTracks" />
       </template>
-      <div v-else-if="errorMessage" class="errorMessage">
+      <p v-else-if="errorMessage" class="errorMessage">
         {{ errorMessage }}
-      </div>
-      <div v-else class="errorMessage">{{ networkError }}</div>
+      </p>
+      <p v-else class="errorMessage">{{ networkError }}</p>
     </div>
   </div>
 </template>
