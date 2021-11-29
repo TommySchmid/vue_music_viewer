@@ -1,8 +1,11 @@
 <template>
   <div class="trackDisplay">
     <div>
-      Keep an eye out for these top {{tracks.artist}} tracks!
+      Keep an eye out for these top tracks!
     </div>
+    <!-- <div>
+      Keep an eye out for these top {{tracks.artist}} tracks!
+    </div> -->
     <div v-for="track in tracks" :key="track.name">
       {{ track.name }}
     </div>

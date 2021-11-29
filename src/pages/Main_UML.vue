@@ -7,9 +7,9 @@
     }"
   >
     <div id="button">
-      <router-link to="/ultimate-favorite-list" tag="div"
-        >Go to Ultimate Favorite List</router-link
-      >
+      <router-link to="/ultimate-favorite-list" custom v-slot="{ navigate }">
+        <div @click="navigate">Go to Ultimate Favorite List</div>
+      </router-link>
     </div>
     <p>Ultmate Music List</p>
     <Form @formSubmit="umlAdd" />

@@ -1,11 +1,18 @@
 <template>
   <div class="welcome">
     <div id="app">
-      <router-link to="/crate-companion" tag="div">Crate Companion</router-link>
+      <router-link to="/crate-companion" custom v-slot="{ navigate }">
+        <div @click="navigate">Crate Companion</div>
+      </router-link>
       <div class="img">
-        <router-link to="/" tag="img" src="https://hostedimages-cdn.aweber-static.com/MTQ0MjU1NQ==/original/3250f960b0184f7498c125c0748dce50.png"></router-link>
+        <router-link to="/" custom v-slot="{ navigate }">
+          <img @click="navigate" src="https://hostedimages-cdn.aweber-static.com/MTQ0MjU1NQ==/original/3250f960b0184f7498c125c0748dce50.png"
+          />
+        </router-link>
       </div>
-      <router-link to="/uml" tag="div">Ultimate Music List</router-link>
+      <router-link to="/uml" custom v-slot="{ navigate }">
+        <div @click="navigate">Ultimate Music List</div>    
+      </router-link>
     </div>
     <router-view />
   </div>
