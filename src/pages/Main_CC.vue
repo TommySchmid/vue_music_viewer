@@ -14,8 +14,8 @@
     <Form @formSubmit="artistSearch" />
     <div>
       <template v-if="display && errorMessage === undefined">
-        <AlbumDisplay v-bind:albums="this.topAlbums" />
-        <TrackDisplay v-bind:tracks="this.topTracks" />
+        <AlbumDisplay :albums="this.topAlbums" />
+        <TrackDisplay :tracks="this.topTracks" />
       </template>
       <p v-else-if="errorMessage" class="errorMessage">
         {{ errorMessage }}
@@ -57,7 +57,6 @@ export default {
           `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=ec2f1febe013b411a18b994f9cdb9319&format=json`
         )
         .then((response) => {
-          console.log("album", response);
           this.errorMessage = response.data.message;
           this.topAlbums = response.data.topalbums.album.slice(0, 5);
           this.display = true;
@@ -70,7 +69,6 @@ export default {
           `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=ec2f1febe013b411a18b994f9cdb9319&format=json`
         )
         .then((response) => {
-          console.log("track", response);
           this.topTracks = response.data.toptracks.track.slice(0, 10);
         })
         .catch((error) => console.log("error", error));
