@@ -12,17 +12,26 @@
       </router-link>
     </div>
     <p>UML Favorites</p>
+    <div v-if="this.display">
+      <UML_Fav_List :artists = "this.fetchedList" />
+    </div>
+    <!-- <div v-for="artist in this.artist"></div> -->
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
+import UML_Fav_List from './UML_Fav_List.vue';
 
 export default {
   name: "UML_Favorites",
+  components: {
+    UML_Fav_List,
+  },
   data() {
     return {
-      artist: "",
+      fetchedList: '',
+      display: false
     };
   },
   methods: {
@@ -30,7 +39,8 @@ export default {
       axios
         .get("https://ultimate-favorite-list-default-rtdb.firebaseio.com/.json")
         .then((response) => {
-          console.log(response);
+          this.fetchedList = Object.values(response.data);
+          this.display = true;
         });
     },
   },
