@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-for="listItem in fetchedList" :key="listItem">{{ listItem }}</div>
+  <div id="main">
+    <div id="listItem" v-for="listItem in fetchedList" :key="listItem">{{ listItem }}</div>
   </div>
 </template>
 
@@ -10,3 +10,15 @@ export default {
   props: ["fetchedList"],
 };
 </script>
+
+<style scoped>
+  #main {
+    display: inline-block;
+  }
+
+  #listItem {
+    color: greenyellow;
+    background-color: green;
+    margin: 3px;
+  }
+</style>
