@@ -1,10 +1,7 @@
 <template>
   <div
     id="main"
-    :style="{
-      'background-image':
-        'url(https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80)',
-    }"
+    :style="image"
   >
     <div id="button">
       <router-link to="/uml" custom v-slot="{ navigate }">
@@ -32,7 +29,8 @@ export default {
   data() {
     return {
       fetchedList: '',
-      display: false
+      display: false,
+      image: { backgroundImage: "url(https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80)" }
     };
   },
   methods: {

@@ -1,10 +1,7 @@
 <template>
   <div
     id="main"
-    :style="{
-      'background-image':
-        'url(https://images.unsplash.com/photo-1587731556938-38755b4803a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1178&q=80)',
-    }"
+    :style="image"
   >
     <p>
       Search for your favorite band and find a list of their most popular albums
@@ -48,6 +45,7 @@ export default {
       btnIsDisabled: true,
       errorMessage: "",
       networkError: "",
+      image: { backgroundImage: "url(https://images.unsplash.com/photo-1587731556938-38755b4803a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1178&q=80)" }
     };
   },
   methods: {
