@@ -8,25 +8,26 @@
   >
     <div id="button">
       <router-link to="/uml" custom v-slot="{ navigate }">
-        <div @click="navigate">Return to Ultimate Music List</div>
+        <div @click="navigate">
+          Return to Ultimate Music List
+        </div>
       </router-link>
     </div>
     <p>UML Favorites</p>
-    <div v-if="this.display">
-      <UML_Fav_List :artists = "this.fetchedList" />
+    <div id="listItemContainer" v-if="this.display">
+      <Fav_List :artists = "this.fetchedList" />
     </div>
-    <!-- <div v-for="artist in this.artist"></div> -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import UML_Fav_List from './UML_Fav_List.vue';
+import Fav_List from './Fav_List.vue';
 
 export default {
-  name: "UML_Favorites",
+  name: "Favorites",
   components: {
-    UML_Fav_List,
+    Fav_List,
   },
   data() {
     return {
@@ -68,5 +69,9 @@ p {
   flex-direction: row;
   justify-content: center;
   width: 100%;
+}
+
+#listItemContainer {
+  justify-content: center;
 }
 </style>

@@ -14,21 +14,30 @@
     <p>Ultmate Music List</p>
     <Form @formSubmit="umlAdd" />
     <p v-if="errorMessage">{{ this.errorMessage }}</p>
+    <!-- <div v-for="listItem in fetchedList" :key="listItem">
+      {{ listItem }}
+    </div> -->
+    <div v-if="fetchedList">
+      <UML_List :fetchedList = "this.fetchedList" />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import Form from "../form/Form.vue";
+import UML_List from "../uml_components/UML_List.vue";
 
 export default {
   name: "Main_UML",
   components: {
     Form,
+    UML_List
   },
   data() {
     return {
       artist: "",
+      fetchedList: undefined,
       errorMessage: undefined,
     };
   },
@@ -37,21 +46,26 @@ export default {
       this.artist = artist;
       axios
         .post(
-          "https://ultimate-music-list.firebaseio.com/.json",
+          "https://vue-ultimate-music-list-default-rtdb.firebaseio.com/.json",
           JSON.stringify(artist)
         )
-        .then(() => {
-          axios
-            .get("https://ultimate-music-list.firebaseio.com/.json")
-            .then((response) => {
-              console.log(response);
-            });
-        })
         .catch(() => {
           this.errorMessage = "The network is currently unavailable";
         });
     },
+    umlFetch() {
+      axios
+        .get(
+          "https://vue-ultimate-music-list-default-rtdb.firebaseio.com/.json"
+        )
+        .then((response) => {
+          this.fetchedList = Object.values(response.data);
+        });
+    },
   },
+  created() {
+    this.umlFetch();
+  }
 };
 </script>
 
