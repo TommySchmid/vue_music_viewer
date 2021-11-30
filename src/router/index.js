@@ -3,7 +3,7 @@ import VueRouter from "vue-router"
 import Main_CC from '../pages/Main_CC'
 import Main_UML from '../pages/Main_UML'
 import Welcome from '../pages/Welcome'
-import UML_Favorites from '../uml_components/UML_Favorites'
+import Favorites from '../uml_components/Favorites'
 
 Vue.use(VueRouter);
 
@@ -31,8 +31,8 @@ const routes = [
   },
   {
     path: "/ultimate-favorite-list",
-    name: UML_Favorites,
-    component: UML_Favorites
+    name: Favorites,
+    component: Favorites
   }
 ];
 
