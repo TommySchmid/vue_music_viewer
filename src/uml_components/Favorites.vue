@@ -1,25 +1,20 @@
 <template>
-  <div
-    id="main"
-    :style="image"
-  >
+  <div id="main" :style="image">
     <div id="button">
-      <router-link to="/uml" custom v-slot="{ navigate }">
-        <div @click="navigate">
-          Return to Ultimate Music List
-        </div>
+      <router-link to="/uml">
+        Return to Ultimate Music List
       </router-link>
     </div>
     <p>UML Favorites</p>
     <div id="listItemContainer" v-if="this.display">
-      <Fav_List :artists = "this.fetchedList" />
+      <Fav_List :artists="this.fetchedList" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import Fav_List from './Fav_List.vue';
+import Fav_List from "./Fav_List.vue";
 
 export default {
   name: "Favorites",
@@ -28,9 +23,12 @@ export default {
   },
   data() {
     return {
-      fetchedList: '',
+      fetchedList: "",
       display: false,
-      image: { backgroundImage: "url(https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80)" }
+      image: {
+        backgroundImage:
+          "url(https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80)",
+      },
     };
   },
   methods: {
@@ -60,9 +58,13 @@ p {
   color: white;
 }
 
+a {
+  color: greenyellow;
+  text-decoration: none;
+}
+
 #button {
   background-color: green;
-  color: greenyellow;
   display: flex;
   flex-direction: row;
   justify-content: center;
