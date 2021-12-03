@@ -4,8 +4,8 @@
     :style="image"
   >
     <div id="button">
-      <router-link to="/ultimate-favorite-list" custom v-slot="{ navigate }">
-        <div @click="navigate">Go to Ultimate Favorite List</div>
+      <router-link to="/ultimate-favorite-list">
+        Go to Ultimate Favorite List
       </router-link>
     </div>
     <p>Ultmate Music List</p>
@@ -79,6 +79,11 @@ export default {
 
 p {
   color: white;
+}
+
+a {
+  color: greenyellow;
+  text-decoration: none;
 }
 
 #button {
