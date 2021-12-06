@@ -4,19 +4,17 @@
     :style="image"
   >
     <div id="button">
-      <router-link to="/ultimate-favorite-list">
+      <router-link to="ultimate-favorite-list">
         Go to Ultimate Favorite List
       </router-link>
     </div>
     <p>Ultmate Music List</p>
     <Form @formSubmit="umlAdd" />
     <p v-if="errorMessage">{{ this.errorMessage }}</p>
-    <!-- <div v-for="listItem in fetchedList" :key="listItem">
-      {{ listItem }}
-    </div> -->
     <div v-if="fetchedList">
       <UML_List :fetchedList = "this.fetchedList" />
     </div>
+    <router-view></router-view>
   </div>
 </template>
 

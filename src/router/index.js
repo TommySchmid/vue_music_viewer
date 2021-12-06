@@ -14,13 +14,29 @@ const routes = [
     component: Welcome
   },
   {
-    path: "/uml",
+    path: "/uml/",
     name: "UML",
     component: Main_UML,
     // children: [
     //   {
-    //     path: "/uml/ultimate-favorite-list",
-    //     component: UML_Favorites
+    //     path: "kayla",
+    //     component: kayla
+    //   },
+    //   {
+    //     path: "mike",
+    //     component: Favorites
+    //   },
+    //   {
+    //     path: "melissa",
+    //     component: Favorites
+    //   },
+    //   {
+    //     path: "rachael",
+    //     component: Favorites
+    //   },
+    //   {
+    //     path: "john",
+    //     component: Favorites
     //   }
     // ]
   },
