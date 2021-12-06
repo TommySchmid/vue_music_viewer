@@ -6,9 +6,30 @@
       </router-link>
     </div>
     <p>UML Favorites</p>
+    <div id="names">
+      <router-link to="/ultimate-favorite-list/kayla">
+        Kayla
+      </router-link>
+      <router-link to="/ultimate-favorite-list/melissa">
+        Melissa
+      </router-link>
+      <router-link to="/ultimate-favorite-list/john">
+        John
+      </router-link>
+      <router-link to="/ultimate-favorite-list/mike">
+        Mike
+      </router-link>
+      <router-link to="/ultimate-favorite-list/rachael">
+        Rachael
+      </router-link>
+      <router-link to="/ultimate-favorite-list/tommy">
+        Tommy
+      </router-link>
+    </div>
     <div id="listItemContainer" v-if="this.display">
       <Fav_List :artists="this.fetchedList" />
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -76,5 +97,16 @@ a {
 
 #listItemContainer {
   justify-content: center;
+}
+
+#names  {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#names a {
+  margin: 5px;
+  color: white;
 }
 </style>
