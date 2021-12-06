@@ -14,7 +14,6 @@
     <div v-if="fetchedList">
       <UML_List :fetchedList = "this.fetchedList" />
     </div>
-    <router-view></router-view>
   </div>
 </template>
 

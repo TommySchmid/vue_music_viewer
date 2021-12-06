@@ -13,12 +13,12 @@ export default {
 
 <style scoped>
   #main {
-    display: inline-block;
+    display: flex;
   }
 
   #listItem {
     color: greenyellow;
     background-color: green;
-    margin: 3px 35% 3px;
+    margin: 3px 25% 3px;
   }
 </style>

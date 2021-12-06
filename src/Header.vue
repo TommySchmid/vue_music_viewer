@@ -11,7 +11,7 @@
         </router-link>
       </div>
       <router-link to="/uml">
-        Ultimate Music List   
+        Ultimate Music List
       </router-link>
     </div>
     <router-view></router-view>
