@@ -38,6 +38,9 @@ export default {
         .then((response) => {
           this.fetchedList = Object.values(response.data);
           this.display = true;
+        })
+        .catch((error) => {
+          console.log('Favorites.vue', error);
         });
     },
   },

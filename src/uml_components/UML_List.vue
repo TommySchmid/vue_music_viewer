@@ -19,6 +19,6 @@ export default {
   #listItem {
     color: greenyellow;
     background-color: green;
-    margin: 3px;
+    margin: 3px 35% 3px;
   }
 </style>
