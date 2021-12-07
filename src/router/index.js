@@ -1,9 +1,9 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
 import Main_CC from '../pages/Main_CC'
-import Main_UML from '../pages/Main_UML'
+import null_UML from '../pages/null_UML'
 import Welcome from '../pages/Welcome'
-import Favorites from '../uml_components/Favorites'
+import Favorites from '../pages/Favorites'
 import Kayla from '../uml_components/lists/Kayla'
 import John from '../uml_components/lists/John'
 import Melissa from '../uml_components/lists/Melissa'
@@ -22,7 +22,7 @@ const routes = [
   {
     path: "/uml/",
     name: "UML",
-    component: Main_UML,
+    component: null_UML,
   },
   {
     path: "/crate-companion",
