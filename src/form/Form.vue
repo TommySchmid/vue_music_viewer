@@ -22,7 +22,13 @@ export default {
   methods: {
     formSubmit() {
       this.$emit("formSubmit", this.artist);
-      this.$emit("umlAdd", this.artist)
+      // this.$emit("umlAdd", this.artist) for old UML component
+      this.$emit("kaylaFormSubmit", this.artist);
+      this.$emit("melissaFormSubmit", this.artist);
+      this.$emit("johnFormSubmit", this.artist);
+      this.$emit("mikeFormSubmit", this.artist);
+      this.$emit("rachaelFormSubmit", this.artist);
+      this.$emit("tommyFormSubmit", this.artist);
       this.artist = null;
       this.btnIsDisabled = true;
     },

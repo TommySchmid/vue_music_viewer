@@ -12,7 +12,7 @@
     <Form @formSubmit="umlAdd" />
     <p v-if="errorMessage">{{ this.errorMessage }}</p>
     <div v-if="fetchedList">
-      <UML_List :fetchedList = "this.fetchedList" />
+      <null_UML_List :fetchedList = "this.fetchedList" />
     </div>
   </div>
 </template>
@@ -20,13 +20,13 @@
 <script>
 import axios from "axios";
 import Form from "../form/Form.vue";
-import UML_List from "../uml_components/UML_List.vue";
+import null_UML_List from "../uml_components/null_UML_List.vue";
 
 export default {
   name: "UML",
   components: {
     Form,
-    UML_List
+    null_UML_List
   },
   data() {
     return {

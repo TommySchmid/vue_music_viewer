@@ -1,7 +1,7 @@
 <template>
   <div id="listItemContainer">
     <div id="listItem" v-for="artist in artists" :key="artist.name">
-      {{ artist.artist }}
+      {{ artist }}
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    text-align: center;
+    justify-content: center;
   }
 
   #listItem {
