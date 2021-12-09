@@ -1,68 +1,31 @@
 <template>
-  <div
-    id="main"
-    :style="image"
-  >
+  <div id="main" :style="image">
     <div id="button">
-      <router-link to="ultimate-favorite-list">
-        Go to Ultimate Favorite List
-      </router-link>
     </div>
-    <p>Ultmate Music List</p>
-    <Form @formSubmit="umlAdd" />
-    <p v-if="errorMessage">{{ this.errorMessage }}</p>
-    <div v-if="fetchedList">
-      <UML_List :fetchedList = "this.fetchedList" />
+    <div id="names">
+      <router-link to="/ultimate-music-list/kayla"> Kayla </router-link>
+      <router-link to="/ultimate-music-list/melissa"> Melissa </router-link>
+      <router-link to="/ultimate-music-list/john"> John </router-link>
+      <router-link to="/ultimate-music-list/mike"> Mike </router-link>
+      <router-link to="/ultimate-music-list/rachael"> Rachael </router-link>
+      <router-link to="/ultimate-music-list/tommy"> Tommy </router-link>
     </div>
+    <p>UML Favorites</p>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import Form from "../form/Form.vue";
-import UML_List from "../uml_components/UML_List.vue";
 
 export default {
   name: "Main_UML",
-  components: {
-    Form,
-    UML_List
-  },
   data() {
     return {
-      artist: "",
-      fetchedList: undefined,
-      errorMessage: undefined,
-      image: { backgroundImage: "url(https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80)" }
+      image: {
+        backgroundImage:
+          "url(https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80)",
+      },
     };
-  },
-  methods: {
-    umlAdd(artist) {
-      this.artist = artist;
-      axios
-        .post(
-          "https://vue-ultimate-music-list-default-rtdb.firebaseio.com/.json",
-          JSON.stringify(artist)
-        )
-        .then(() => {
-          this.umlFetch();
-        })
-        .catch(() => {
-          this.errorMessage = "The network is currently unavailable";
-        });
-    },
-    umlFetch() {
-      axios
-        .get(
-          "https://vue-ultimate-music-list-default-rtdb.firebaseio.com/.json"
-        )
-        .then((response) => {
-          this.fetchedList = Object.values(response.data);
-        });
-    },
-  },
-  created() {
-    this.umlFetch();
   }
 };
 </script>
@@ -85,10 +48,25 @@ a {
 
 #button {
   background-color: green;
-  color: greenyellow;
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
+}
+
+#listItemContainer {
+  justify-content: center;
+}
+
+#names {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#names a {
+  margin: 5px;
+  color: white;
+  text-decoration: underline;
 }
 </style>

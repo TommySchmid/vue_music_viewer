@@ -3,7 +3,7 @@ import VueRouter from "vue-router"
 import Main_CC from '../pages/Main_CC'
 import null_UML from '../pages/null_UML'
 import Welcome from '../pages/Welcome'
-import Favorites from '../pages/Favorites'
+import Main_UML from '../pages/Main_UML'
 import Kayla from '../uml_components/lists/Kayla'
 import John from '../uml_components/lists/John'
 import Melissa from '../uml_components/lists/Melissa'
@@ -30,9 +30,9 @@ const routes = [
     component: Main_CC
   },
   {
-    path: "/ultimate-favorite-list",
-    name: Favorites,
-    component: Favorites,
+    path: "/ultimate-music-list",
+    name: Main_UML,
+    component: Main_UML,
     children: [
       {
         path: "kayla",

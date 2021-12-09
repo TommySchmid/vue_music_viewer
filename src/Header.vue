@@ -10,7 +10,7 @@
           />
         </router-link>
       </div>
-      <router-link to="/ultimate-favorite-list">
+      <router-link to="/ultimate-music-list">
         Ultimate Music List
       </router-link>
     </div>

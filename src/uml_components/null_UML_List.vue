@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "UML_List",
+  name: "null_UML_List",
   props: ["fetchedList"],
 };
 </script>
