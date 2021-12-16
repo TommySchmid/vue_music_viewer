@@ -1,7 +1,15 @@
 <template>
   <div>
     <div id="main">Melissa's List</div>
-    <Form @melissaFormSubmit="addToList"/>
+    <Form @melissaFormSubmit="addToList" />
+    <div v-if="this.submissionError">
+      <p id="error">
+        There was an issue with your submission. Please refresh and try again.
+      </p>
+    </div>
+    <div v-if="this.fetchError">
+      <p id="error">The network is not currently available</p>
+    </div>
     <div v-if="this.display">
       <Fav_List :artists="this.fetchedList" />
     </div>
@@ -9,21 +17,23 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Form from '../../form/Form.vue'
-import Fav_List from '../Fav_List.vue'
+import axios from "axios";
+import Form from "../../form/Form.vue";
+import Fav_List from "../Fav_List.vue";
 
 export default {
   name: "Melissa",
-    components: {
+  components: {
     Form,
-    Fav_List
+    Fav_List,
   },
   props: ["artists"],
   data() {
     return {
       fetchedList: "",
       display: false,
+      fetchError: false,
+      submissionError: false
     };
   },
   methods: {
@@ -34,8 +44,8 @@ export default {
           this.fetchedList = Object.values(response.data);
           this.display = true;
         })
-        .catch((error) => {
-          console.log("Favorites.vue", error);
+        .catch(() => {
+          this.fetchError = true;
         });
     },
     addToList(artist) {
@@ -46,6 +56,9 @@ export default {
         )
         .then(() => {
           this.fetchFavorites();
+        })
+        .catch(() => {
+          this.submissionError = true;
         });
     },
   },
@@ -58,5 +71,11 @@ export default {
 <style scoped>
 #main {
   color: white;
+}
+
+#error {
+  color: white;
+  background-color: red;
+  margin: 0px 25% 0px;
 }
 </style>

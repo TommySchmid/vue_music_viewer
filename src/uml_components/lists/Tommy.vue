@@ -2,6 +2,15 @@
   <div>
     <div id="main">Tommy's List</div>
     <Form @tommyFormSubmit="addToList" />
+    <div v-if="this.submissionError">
+      <p id="error">
+        There was an issue with your submission. Please refresh and try again.
+      </p>
+    </div>
+    <div v-if="this.fetchError">
+      <p id="error">The network is not currently available</p>
+    </div>
+
     <div v-if="this.display">
       <Fav_List :artists="this.fetchedList" />
     </div>
@@ -23,6 +32,8 @@ export default {
     return {
       fetchedList: "",
       display: false,
+      fetchError: false,
+      submissionError: false
     };
   },
   methods: {
@@ -32,11 +43,9 @@ export default {
         .then((response) => {
           this.fetchedList = response.data;
           this.display = true;
-          console.log(response);
-          console.log(this.fetchedList);
         })
-        .catch((error) => {
-          console.log("Favorites.vue", error);
+        .catch(() => {
+          this.fetchError = true;
         });
     },
     addToList(artist) {
@@ -47,6 +56,9 @@ export default {
         )
         .then(() => {
           this.fetchFavorites();
+        })
+        .catch(() => {
+          this.submissionError = true;
         });
     },
   },
@@ -59,5 +71,11 @@ export default {
 <style scoped>
 #main {
   color: white;
+}
+
+#error {
+  color: white;
+  background-color: red;
+  margin: 0px 25% 0px;
 }
 </style>

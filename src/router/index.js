@@ -1,8 +1,9 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
 import Main_CC from '../pages/Main_CC'
-import null_UML from '../pages/null_UML'
+// import null_UML from '../pages/null_UML'
 import Welcome from '../pages/Welcome'
+import Auth from '../pages/Auth'
 import Main_UML from '../pages/Main_UML'
 import Kayla from '../uml_components/lists/Kayla'
 import John from '../uml_components/lists/John'
@@ -16,14 +17,19 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
+    name: "Auth",
+    component: Auth
+  },
+  {
+    path: "/welcome",
     name: "Welcome",
     component: Welcome
   },
-  {
-    path: "/uml/",
-    name: "UML",
-    component: null_UML,
-  },
+  // {
+  //   path: "/uml/",
+  //   name: "UML",
+  //   component: null_UML,
+  // },
   {
     path: "/crate-companion",
     name: "Main_CC",
