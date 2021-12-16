@@ -85,6 +85,8 @@ export default {
 
 .errorMessage {
   color: white;
+  background-color: red;
+  margin: 0px 25% 0px;
 }
 
 p {
