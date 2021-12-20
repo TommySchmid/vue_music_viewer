@@ -18,6 +18,18 @@
   </div>
 </template>
 
+<script>
+  export default {
+    name: 'Header',
+    data() {
+      return  {
+        token: '',
+        userIsLoggedIn: false,
+      }
+    },
+  }
+</script>
+
 <style scoped>
 #app {
   text-align: center;
