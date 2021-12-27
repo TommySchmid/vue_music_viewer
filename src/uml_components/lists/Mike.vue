@@ -31,6 +31,7 @@ export default {
   data() {
     return {
       fetchedList: "",
+      fetchedToken: this.$store.state.token,
       display: false,
       fetchError: false,
       submissionError: false
@@ -41,7 +42,7 @@ export default {
       axios
         .get("https://vue-umlcc-mike-default-rtdb.firebaseio.com/.json")
         .then((response) => {
-          this.fetchedList = Object.values(response.data);
+          this.fetchedList = response.data;
           this.display = true;
         })
         .catch(() => {
@@ -51,7 +52,7 @@ export default {
     addToList(artist) {
       axios
         .post(
-          "https://vue-umlcc-mike-default-rtdb.firebaseio.com/.json",
+          `https://vue-umlcc-mike-default-rtdb.firebaseio.com/.json?auth=${localStorage.getItem('idToken')}`,
           JSON.stringify(artist)
         )
         .then(() => {
