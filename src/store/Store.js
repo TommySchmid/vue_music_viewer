@@ -5,14 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    token: '',
+    idToken: '',
+    refreshToken: '',
     isUserLoggedIn: false
   },
   mutations: {
-    loginHandler(state, signInData) {
-      state.token = signInData.token;
+    loginHandler(state, payload) {
+      state.idToken = payload.tokens.idToken;
+      state.refreshToken = payload.tokens.refreshToken;
       state.isUserLoggedIn = true;
-      console.log('loginHandler 2', state);
     },
     logoutHandler() {
       console.log('logoutHandler')

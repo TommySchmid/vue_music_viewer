@@ -14,6 +14,7 @@
         <button>Login</button>
       </div>
     </form>
+    <div v-if="loginSuccess">Login Successful</div>
     <div v-if="loginFailed">Login Failed</div>
   </div>
 </template>
@@ -21,11 +22,16 @@
 <script>
 export default {
   name: "AuthForm",
+  props: ["userAPIKey"],
   data() {
     return {
       data: {
         email: "",
         password: "",
+      },
+      tokens: {
+        idToken: "",
+        refreshToken: ""
       },
       loginSuccess: false,
       loginFailed: false,
@@ -35,7 +41,7 @@ export default {
     submitHandler(event) {
       event.preventDefault();
       fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCrt1P4ixN3qJGdh5a0iOfh1Fds3X2S2KA",
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.userAPIKey}`,
         {
           method: "POST",
           body: JSON.stringify({
@@ -50,10 +56,12 @@ export default {
       )
         .then((response) => {
           response.json().then((data) => {
-            this.loginSuccess = true;
-            console.log("auth response", data);
             if (response.ok) {
-              this.tokenSubmit(data.idToken);
+              this.loginSuccess = true;
+              this.tokens.idToken = data.idToken;
+              this.tokens.refreshToken = data.refreshToken;
+              this.tokenSubmit(this.tokens);
+              localStorage.setItem('idToken', data.idToken);
             } else {
               this.loginFailed = true;
             }
@@ -63,14 +71,19 @@ export default {
           console.log("AuthForm Error", error);
         });
     },
-    tokenSubmit(token) {
+    tokenSubmit(tokens) {
       this.$store.commit({
-        type: 'loginHandler',
-        token: token
+        type: "loginHandler",
+        tokens: {
+          idToken: tokens.idToken,
+          refreshToken: tokens.refreshToken
+        }
       });
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

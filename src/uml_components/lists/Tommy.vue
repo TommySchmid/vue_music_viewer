@@ -31,6 +31,7 @@ export default {
   data() {
     return {
       fetchedList: "",
+      fetchedToken: this.$store.state.token,
       display: false,
       fetchError: false,
       submissionError: false
@@ -51,7 +52,7 @@ export default {
     addToList(artist) {
       axios
         .post(
-          "https://vue-umlcc-tommy-default-rtdb.firebaseio.com/.json",
+          `https://vue-umlcc-tommy-default-rtdb.firebaseio.com/.json?auth=${localStorage.getItem('idToken')}`,
           JSON.stringify(artist)
         )
         .then(() => {

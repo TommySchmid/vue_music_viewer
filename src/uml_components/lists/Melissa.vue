@@ -17,20 +17,21 @@
 </template>
 
 <script>
-import axios from "axios";
-import Form from "../../form/Form.vue";
-import Fav_List from "../Fav_List.vue";
+import axios from 'axios'
+import Form from '../../form/Form.vue'
+import Fav_List from '../Fav_List.vue'
 
 export default {
   name: "Melissa",
-  components: {
+    components: {
     Form,
-    Fav_List,
+    Fav_List
   },
   props: ["artists"],
   data() {
     return {
       fetchedList: "",
+      fetchedToken: this.$store.state.token,
       display: false,
       fetchError: false,
       submissionError: false
@@ -41,7 +42,7 @@ export default {
       axios
         .get("https://vue-umlcc-melissa-default-rtdb.firebaseio.com/.json")
         .then((response) => {
-          this.fetchedList = Object.values(response.data);
+          this.fetchedList = response.data;
           this.display = true;
         })
         .catch(() => {
@@ -51,7 +52,7 @@ export default {
     addToList(artist) {
       axios
         .post(
-          "https://vue-umlcc-melissa-default-rtdb.firebaseio.com/.json",
+          `https://vue-umlcc-melissa-default-rtdb.firebaseio.com/.json?auth=${localStorage.getItem('idToken')}`,
           JSON.stringify(artist)
         )
         .then(() => {

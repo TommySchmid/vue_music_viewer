@@ -1,16 +1,16 @@
 <template>
   <div id="main" :style="image">
-    <AuthForm />
+    <AuthUserSelector />
   </div>
 </template>
 
 <script>
-import AuthForm from "../form/AuthForm.vue";
+import AuthUserSelector from "../form/AuthUserSelector.vue";
 
 export default {
   name: "Auth",
   components: {
-    AuthForm,
+    AuthUserSelector
   },
   data() {
     return {
