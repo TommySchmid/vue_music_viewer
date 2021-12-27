@@ -124,6 +124,7 @@ export default {
 
 #names div {
   margin: 5px;
+  cursor: pointer;
 }
 
 .underline {
