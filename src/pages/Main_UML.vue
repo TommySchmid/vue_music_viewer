@@ -10,7 +10,6 @@
       <router-link to="/ultimate-music-list/rachael"> Rachael </router-link>
       <router-link to="/ultimate-music-list/tommy"> Tommy </router-link>
     </div>
-    <p>UML Favorites</p>
     <router-view></router-view>
   </div>
 </template>
