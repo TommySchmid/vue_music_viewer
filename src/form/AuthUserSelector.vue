@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="underline">
+      Select a user account and login to add to your Ultimate Music List
+    </div>
     <div id="names">
       <div @click="kaylaClick" :class="{ underline: users.kayla }">Kayla</div>
       <div @click="melissaClick" :class="{ underline: users.melissa }">
