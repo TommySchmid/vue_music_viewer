@@ -4,7 +4,8 @@
     <form @submit="submitHandler">
       <div className="control">
         <label htmlFor="email">Your Email: </label>
-        <input v-model="email" type="email" id="email" required />
+        <input v-model="email" type="email" id="email" required 
+        />
       </div>
       <div className="control">
         <label htmlFor="password">Your Password: </label>
