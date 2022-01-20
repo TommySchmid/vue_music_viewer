@@ -1,7 +1,9 @@
 <template>
   <div>
     <div id="main">Tommy's List</div>
-    <Form @tommyFormSubmit="addToList" />
+    <Form 
+      @tommyFormSubmit="addToList"                    
+    />
     <div v-if="this.submissionError">
       <p id="error">
         There was an issue with your submission. Please refresh and try again.
@@ -12,11 +14,16 @@
     </div>
 
     <div v-if="this.display === 'uml'">
-      <Fav_List :artists="this.fetchedList" />
+      <Fav_List :artists="this.fetchedList"
+        @deleteUserListItem="deleteItem"
+      />
     </div>
     <div v-if="this.display === 'vinyl'">
-      <Fav_List :artists="this.fetchedList" />
+      <Fav_List :artists="this.fetchedList"
+        @deleteUserListItem="deleteItem"
+      />
     </div>
+
     <button v-if="this.display === 'uml'" @click="fetchVinyl">
       Click to view Tommy's Vinyl Collection
     </button>
@@ -104,6 +111,9 @@ export default {
           this.fetchError = true;
         });
     },
+    deleteItem(deleteArtist) {
+      console.log('tommy here', deleteArtist);
+    }
   },
   mounted() {
     this.fetchFavorites();

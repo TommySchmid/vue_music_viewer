@@ -12,10 +12,14 @@
     </div>
 
     <div v-if="this.display === 'uml'">
-      <Fav_List :artists="this.fetchedList" />
+      <Fav_List :artists="this.fetchedList"
+        @deleteUserListItem="deleteItem"
+      />
     </div>
     <div v-if="this.display === 'vinyl'">
-      <Fav_List :artists="this.fetchedList" />
+      <Fav_List :artists="this.fetchedList"
+        @deleteUserListItem="deleteItem"
+      />
     </div>
     <button v-if="this.display === 'uml'" @click="fetchVinyl">
       Click to view Rachael's Vinyl Collection
@@ -104,6 +108,9 @@ export default {
           this.fetchError = true;
         });
     },
+    deleteItem(deleteArtist) {
+      console.log('rachael here', deleteArtist);
+    }
   },
   mounted() {
     this.fetchFavorites();

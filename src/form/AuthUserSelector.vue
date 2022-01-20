@@ -113,6 +113,7 @@ export default {
     },
     logoutHandler() {
       localStorage.removeItem('idToken');
+      alert('Logout Successful');
     }
   },
 };
