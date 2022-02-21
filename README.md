@@ -3,6 +3,8 @@ Deployed manually using surge.sh
 
 This application serves as a tool through which you can quickly reference top albums and tracks from your favorite band, or a completely new band. Before heading to the record store for a few hours of digging, make sure you know which albums to keep an eye out for!
 
+Authorized users can submit and track their favorite musicians.
+
 Vue used as framework, Axios for network requests.
 
 Crate Companion sends user input to last.fm/api endpoint and displays response data.
@@ -30,3 +32,4 @@ Future Enhancements
 - Mobile Styling
 - Unit testing library
 - Search and resopnse filtering for Crate Companion. Shouldn't be able to search for only special characters. Responses below a certain 'total plays' threshold (which is returned in payload) can be excluded, for example.
+- Add a vinyl collection list toggle for each user, allowing them to keep track of their wax.
